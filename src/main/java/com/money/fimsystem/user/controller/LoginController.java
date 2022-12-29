@@ -1,6 +1,6 @@
-package com.money.fimsystem.auth.controller;
+package com.money.fimsystem.user.controller;
 
-import com.money.fimsystem.auth.entity.User;
+import com.money.fimsystem.user.entity.User;
 import com.money.fimsystem.common.entity.ResponseBuilder;
 import com.money.fimsystem.common.entity.ResultResponse;
 import lombok.extern.slf4j.Slf4j;

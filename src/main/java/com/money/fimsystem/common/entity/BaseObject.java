@@ -25,6 +25,6 @@ public class BaseObject implements Serializable {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateUser;
 
-    @TableLogic
-    private Integer isdelete;
+//    @TableLogic
+//    private Integer isdelete;
 }

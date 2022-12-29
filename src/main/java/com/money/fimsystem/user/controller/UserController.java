@@ -1,10 +1,10 @@
-package com.money.fimsystem.auth.controller;
+package com.money.fimsystem.user.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.money.fimsystem.auth.entity.User;
-import com.money.fimsystem.auth.service.IUserService;
+import com.money.fimsystem.user.entity.User;
+import com.money.fimsystem.user.service.IUserService;
 import com.money.fimsystem.common.entity.ResponseBuilder;
 import com.money.fimsystem.common.entity.ResultResponse;
 import io.swagger.annotations.Api;

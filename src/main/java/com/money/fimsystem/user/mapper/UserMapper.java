@@ -1,6 +1,6 @@
-package com.money.fimsystem.auth.mapper;
+package com.money.fimsystem.user.mapper;
 
-import com.money.fimsystem.auth.entity.User;
+import com.money.fimsystem.user.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

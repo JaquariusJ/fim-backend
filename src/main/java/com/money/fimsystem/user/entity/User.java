@@ -1,15 +1,15 @@
-package com.money.fimsystem.auth.entity;
+package com.money.fimsystem.user.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.money.fimsystem.common.entity.BaseObject;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -34,6 +34,8 @@ public class User extends BaseObject {
     private String password;
 
     private LocalDate birthday;
+
+    private Integer age;
 
     private Integer sex;
 
