@@ -7,6 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+/**
+ * mybatis配置
+ *
+ * @author Administrator
+ * @date 2022/03/17
+ */
 @Configuration
 public class MybatisConfig {
 
@@ -15,10 +21,10 @@ public class MybatisConfig {
         return new PaginationInterceptor();
     }
 
-//    @Bean
-//    public LogicDeleteByIdWithFill sqlInjector() {
-//        return new LogicDeleteByIdWithFill();
-//    }
+    @Bean
+    public LogicDeleteByIdWithFill sqlInjector() {
+        return new LogicDeleteByIdWithFill();
+    }
 
     @Bean
     public OptimisticLockerInterceptor optimisticLockerInterceptor(){

@@ -17,7 +17,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         if(!isvalue){
             this.setInsertFieldValByName("createTime", LocalDateTime.now(),metaObject);
         }
-        this.setInsertFieldValByName("createBy",metaObject.getValue("createBy"),metaObject);
+        this.setInsertFieldValByName("createUser",metaObject.getValue("createUser"),metaObject);
 
     }
 
@@ -28,7 +28,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
             this.setUpdateFieldValByName("updateTime", LocalDateTime.now(),metaObject);
         }
 
-        this.setUpdateFieldValByName("updateBy",metaObject.getValue("updateBy"),metaObject);
+        this.setUpdateFieldValByName("updateUser",metaObject.getValue("updateUser"),metaObject);
 
 
     }

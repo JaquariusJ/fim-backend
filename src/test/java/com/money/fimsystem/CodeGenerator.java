@@ -53,7 +53,7 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
-        dataSourceConfig.setUrl("jdbc:mysql://192.168.1.106:30060/fim-system?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dataSourceConfig.setUrl("jdbc:mysql://43.139.36.238:3306/fimdb?useUnicode=true&useSSL=false&characterEncoding=utf8");
         // dataSourceConfig.setSchemaName("public");
         dataSourceConfig.setDriverName("com.mysql.cj.jdbc.Driver");
         dataSourceConfig.setUsername("root");
@@ -63,7 +63,7 @@ public class CodeGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(scanner("包名"));
-        pc.setParent("com.money.fimsystem.business");
+        pc.setParent("com.money.fimsystem");
         autoGenerator.setPackageInfo(pc);
 
         // 自定义配置
@@ -128,14 +128,14 @@ public class CodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setInclude("plat");
+        strategy.setInclude("user");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类
         //strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
         strategy.setSuperEntityClass(BaseObject.class);
-        strategy.setSuperEntityColumns("create_time","create_by","update_time","update_by","isdelete");
+        strategy.setSuperEntityColumns("create_time","create_user","update_time","update_user","isdelete");
         strategy.setControllerMappingHyphenStyle(true);
 
         autoGenerator.setStrategy(strategy);
