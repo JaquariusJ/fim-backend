@@ -31,11 +31,4 @@ public class MybatisConfig {
         return new OptimisticLockerInterceptor();
     }
 
-//    @Bean
-//    @Profile("dev")
-//    public PerformanceInterceptor performanceInterceptor(){
-//        PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
-//        performanceInterceptor.setFormat(true);
-//        return performanceInterceptor;
-//    }
 }

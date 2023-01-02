@@ -3,6 +3,19 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql://43.139.36.238:3306/fimdb?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+  redis:
+    host: 192.168.31.133
+    port: 30079
+    password: 123456
+    lettuce:
+      pool:
+        #        连接池最大连接数
+        max-active: 8
+        #最大阻塞等待时间
+        max-wait: -1
+        #最大空闲连接
+        max-idle: 8
+        #连接超时时间（ms）
 
 mybatis-plus:
   configuration:
@@ -12,7 +25,8 @@ mybatis-plus:
   mapper-locations: classpath:META-INF/mybatis/*Mapper.xml,classpath:META-INF/mybatis/*-mapper.xml,classpath:META-INF/tbmanager/*Mapper.xml
 
 minio:
-  url: http://172.27.96.200:9001
-  accessKey: minioadmin
-  secretKey: minioadmin
+  url: http://192.168.31.133:30202
+  accessKey: admin
+  secretKey: admin123456
   bucketName: fim
+

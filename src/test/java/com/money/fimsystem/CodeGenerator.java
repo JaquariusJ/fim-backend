@@ -62,8 +62,8 @@ public class CodeGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName(scanner("包名"));
-        pc.setParent("com.money.fimsystem");
+        pc.setModuleName("accounts");
+        pc.setParent("com.money.fimsystem.consume");
         autoGenerator.setPackageInfo(pc);
 
         // 自定义配置
@@ -128,14 +128,14 @@ public class CodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setInclude("user");
+        strategy.setInclude("account_logo");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类
         //strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
         strategy.setSuperEntityClass(BaseObject.class);
-        strategy.setSuperEntityColumns("create_time","create_user","update_time","update_user","isdelete");
+        strategy.setSuperEntityColumns("create_time","create_user","update_time","update_user");
         strategy.setControllerMappingHyphenStyle(true);
 
         autoGenerator.setStrategy(strategy);

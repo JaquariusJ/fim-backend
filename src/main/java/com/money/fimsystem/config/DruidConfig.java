@@ -34,16 +34,4 @@ public class DruidConfig {
         return bean;
     }
 
-    @Bean
-    public FilterRegistrationBean webStatFilter(){
-        FilterRegistrationBean bean = new FilterRegistrationBean();
-        bean.setFilter(new WebStatFilter());
-        Map<String,String> param = new HashMap<>();
-        param.put("exclusions","*.js,*.css,/druid/*");
-        bean.setInitParameters(param);
-        bean.setUrlPatterns(Arrays.asList("/*"));
-        return bean;
-    }
-
-
 }

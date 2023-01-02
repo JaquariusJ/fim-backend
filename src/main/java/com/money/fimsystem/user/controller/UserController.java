@@ -3,10 +3,9 @@ package com.money.fimsystem.user.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.money.fimsystem.common.entity.ResponseResult;
 import com.money.fimsystem.user.entity.User;
 import com.money.fimsystem.user.service.IUserService;
-import com.money.fimsystem.common.entity.ResponseBuilder;
-import com.money.fimsystem.common.entity.ResultResponse;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +38,7 @@ public class UserController {
     */
     @RequestMapping(value="/save",method= RequestMethod.POST)
     @ResponseBody
-    public ResultResponse save(@RequestBody User user){
+    public ResponseResult save(@RequestBody User user){
         try {
             if(user.getId()!=null){
                 userService.updateById(user);
@@ -48,9 +47,9 @@ public class UserController {
             }
         } catch (Exception e) {
             logger.error(e.getMessage());
-            return ResponseBuilder.fail(e.getMessage());
+            return ResponseResult.failed(e.getMessage());
         }
-            return ResponseBuilder.success();
+            return ResponseResult.success();
     }
 
     /**
@@ -59,14 +58,14 @@ public class UserController {
     * @return
     */
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-    public ResultResponse delete(@PathVariable("id") Long id){
+    public ResponseResult delete(@PathVariable("id") Long id){
         try {
             userService.removeById(id);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            return ResponseBuilder.fail(e.getMessage());
+            return ResponseResult.failed(e.getMessage());
         }
-        return ResponseBuilder.success();
+        return ResponseResult.success();
     }
 
 
@@ -76,27 +75,27 @@ public class UserController {
     * @return
     */
     @RequestMapping(value="/delete",method=RequestMethod.GET)
-    public ResultResponse batchDelete(@PathVariable("ids") List<Integer> ids){
+    public ResponseResult batchDelete(@PathVariable("ids") List<Integer> ids){
         try {
             userService.removeByIds(ids);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            return ResponseBuilder.fail(e.getMessage());
+            return ResponseResult.failed(e.getMessage());
         }
-            return ResponseBuilder.success();
+            return ResponseResult.success();
     }
 
     //根据id查询
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public ResultResponse get(@PathVariable("id")Long id) {
+    public ResponseResult get(@PathVariable("id")Long id) {
         User user = null;
         try {
             user = userService.getById(id);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            return ResponseBuilder.fail(e.getMessage());
+            return ResponseResult.failed(e.getMessage());
         }
-        return ResponseBuilder.success(user);
+        return ResponseResult.success(user);
     }
 
 
@@ -105,15 +104,15 @@ public class UserController {
     * @return
     */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public ResultResponse list(@RequestBody User user){
+    public ResponseResult list(@RequestBody User user){
         List<User> list = null;
         try {
             list = userService.list(new LambdaQueryWrapper<>(user));
         } catch (Exception e) {
             logger.error(e.getMessage());
-            return ResponseBuilder.fail(e.getMessage());
+            return ResponseResult.failed(e.getMessage());
         }
-            return ResponseBuilder.success(list);
+            return ResponseResult.success(list);
      }
 
 
@@ -124,7 +123,7 @@ public class UserController {
     * @return
     */
     @RequestMapping(value = "/pagelist",method = RequestMethod.POST)
-    public ResultResponse<User> selectPage(@RequestBody User user,int pageNo,int PageNum) {
+    public ResponseResult selectPage(@RequestBody User user,int pageNo,int PageNum) {
         IPage<User> iPage = null;
         Page<User> page = null;
         try {
@@ -132,9 +131,9 @@ public class UserController {
                 iPage = userService.page(page);
          } catch (Exception e) {
                 logger.error(e.getMessage());
-                ResponseBuilder.fail(e.getMessage());
+            ResponseResult.failed(e.getMessage());
           }
-         return ResponseBuilder.success(iPage);
+         return ResponseResult.success(iPage);
      }
 
 }
