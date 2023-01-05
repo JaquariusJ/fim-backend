@@ -17,13 +17,13 @@ public class BaseObject implements Serializable {
     private LocalDateTime createTime;
 
     @TableField(fill = FieldFill.INSERT)
-    private String createUser;
+    private Long createUser;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private String updateUser;
+    private Long updateUser;
 
 //    @TableLogic
 //    private Integer isdelete;

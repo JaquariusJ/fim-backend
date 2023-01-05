@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <configuration>
-<!--    <property name="log.path" value="/Users/wujian/IdeaProjects/hsbc-ocr-real-predictor/deploy/bbdm/log"/>-->
+    <property name="log.path" value="G:\\log"/>
     <property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss} [%p] --- [%t] %c [%L]  :    %m%n"/>
 
     <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
@@ -48,8 +48,8 @@
 
     <root level="info">
         <appender-ref ref="consoleLog" />
-        <appender-ref ref="fileInfoLog" />
-        <appender-ref ref="fileErrorLog" />
+<!--        <appender-ref ref="fileInfoLog" />-->
+<!--        <appender-ref ref="fileErrorLog" />-->
     </root>
 
 </configuration>
