@@ -4,8 +4,8 @@ spring:
     password: 123456
     url: jdbc:mysql://43.139.36.238:3306/fimdb?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
   redis:
-    host: 192.168.31.133
-    port: 30079
+    host: 43.139.36.238
+    port: 6379
     password: 123456
     lettuce:
       pool:
@@ -16,6 +16,7 @@ spring:
         #最大空闲连接
         max-idle: 8
         #连接超时时间（ms）
+
 
 mybatis-plus:
   configuration:

@@ -1,4 +1,4 @@
-package com.money.fimsystem.security.handlers;
+package com.money.fimsystem.auth.handlers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;

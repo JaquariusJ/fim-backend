@@ -1,4 +1,4 @@
-package com.money.fimsystem.security.utils;
+package com.money.fimsystem.auth.utils;
 
 import com.money.fimsystem.common.constants.TOKEN_CONST;
 import io.jsonwebtoken.Claims;

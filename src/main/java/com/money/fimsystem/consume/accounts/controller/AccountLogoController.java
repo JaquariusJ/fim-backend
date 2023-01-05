@@ -3,6 +3,7 @@ package com.money.fimsystem.consume.accounts.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.money.fimsystem.auth.LoginManager;
 import com.money.fimsystem.common.entity.ResponseResult;
 import com.money.fimsystem.common.utils.JsonUtils;
 import com.money.fimsystem.consume.accounts.entity.AccountCategory;
@@ -45,8 +46,8 @@ public class AccountLogoController {
     */
     @RequestMapping(value="/save",method= RequestMethod.POST)
     @ResponseBody
-    public ResponseResult save(@RequestBody AccountLogo accountLogo,@RequestHeader("userId")Long userId){
-        accountLogo.setUserid(userId);
+    public ResponseResult save(@RequestBody AccountLogo accountLogo){
+        accountLogo.setUserid(LoginManager.getCurrentUserId());
         if(accountLogo.getId()!=null){
             accountLogoService.updateById(accountLogo);
         }else{
@@ -92,10 +93,10 @@ public class AccountLogoController {
         * @return
         */
     @PostMapping(value = "/list")
-    public ResponseResult list(@RequestHeader("userId")String userId,@RequestBody AccountLogo accountLogo){
+    public ResponseResult list(@RequestBody AccountLogo accountLogo){
         List<AccountLogo> list = null;
         list = accountLogoService.list(new LambdaQueryWrapper<>(accountLogo)
-                .eq(AccountLogo::getUserid,userId)
+                .eq(AccountLogo::getUserid,LoginManager.getCurrentUserId())
         );
         return ResponseResult.success(list);
     }

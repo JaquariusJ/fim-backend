@@ -1,10 +1,9 @@
-package com.money.fimsystem.security.filter;
+package com.money.fimsystem.auth.filter;
 
 import com.money.fimsystem.common.intercepters.HeaderMapRequestWrapper;
-import com.money.fimsystem.security.utils.JwtUtils;
+import com.money.fimsystem.auth.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;

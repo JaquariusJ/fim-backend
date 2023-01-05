@@ -1,11 +1,11 @@
-package com.money.fimsystem.security.filter;
+package com.money.fimsystem.auth.filter;
 
 import com.money.fimsystem.common.constants.REDIS_CONST;
 import com.money.fimsystem.common.utils.JsonUtils;
 import com.money.fimsystem.common.utils.SpringUtils;
 import com.money.fimsystem.redis.RedisClient;
-import com.money.fimsystem.security.utils.JwtUtils;
-import com.money.fimsystem.security.vo.AuthUserDetails;
+import com.money.fimsystem.auth.utils.JwtUtils;
+import com.money.fimsystem.auth.vo.AuthUserDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

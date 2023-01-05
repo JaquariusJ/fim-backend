@@ -32,7 +32,7 @@ public class MapStrcutTest {
         AccountDetail accountDetail = new AccountDetail();
         accountDetail.setMask("1");
         accountDetail.setLogoid(1111l);
-        accountDetail.setAccountdate(LocalDate.now());
+        accountDetail.setAccountDate(LocalDate.now());
         accountDetail.setId(1111l);
         accountDetail.setMount(BigDecimal.ONE);
         accountDetail.setUserid(1111l);

@@ -47,7 +47,8 @@ public class AccountDetailServiceImpl extends ServiceImpl<AccountDetailMapper, A
     public PageInfo<AccountDetailVo> pageList(AccountDetail accountDetail, int pageNo, int pageNum) {
         //查询分页消费记录
         PageHelper.startPage(pageNo, pageNum);
-        List<AccountDetail> accountDetails = this.baseMapper.selectList(new LambdaQueryWrapper<AccountDetail>(accountDetail).orderByDesc(AccountDetail::getAccountDate));
+        List<AccountDetail> accountDetails = this.baseMapper.selectList(new LambdaQueryWrapper<AccountDetail>(accountDetail)
+                .orderByDesc(AccountDetail::getAccountDate));
         PageInfo<AccountDetail> accountDetailsPageInfo = new PageInfo<>(accountDetails);
 
         //查询该用户所有的logo

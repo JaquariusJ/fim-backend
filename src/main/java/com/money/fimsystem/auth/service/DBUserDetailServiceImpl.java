@@ -1,12 +1,11 @@
-package com.money.fimsystem.security.service;
+package com.money.fimsystem.auth.service;
 
-import com.money.fimsystem.security.vo.AuthUserDetails;
+import com.money.fimsystem.auth.vo.AuthUserDetails;
 import com.money.fimsystem.user.entity.User;
 import com.money.fimsystem.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 

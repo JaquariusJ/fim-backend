@@ -1,7 +1,7 @@
 package com.money.fimsystem.config;
 
-import com.money.fimsystem.security.filter.AddUserIdHeaderFilter;
-import com.money.fimsystem.security.filter.TokenCheckFilter;
+import com.money.fimsystem.auth.filter.AddUserIdHeaderFilter;
+import com.money.fimsystem.auth.filter.TokenCheckFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -73,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         //添加token校验的过滤器
          httpSecurity.addFilterBefore(new TokenCheckFilter(), UsernamePasswordAuthenticationFilter.class);
-         httpSecurity.addFilterBefore(new AddUserIdHeaderFilter(),UsernamePasswordAuthenticationFilter.class);
+//         httpSecurity.addFilterBefore(new AddUserIdHeaderFilter(),UsernamePasswordAuthenticationFilter.class);
         //
         //配置认证和授权异常处理器
 
