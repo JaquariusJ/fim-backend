@@ -23,6 +23,8 @@
 		<java.version>1.8</java.version>
 		<thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
 		<thymeleaf-layout-dialect.version>2.1.1</thymeleaf-layout-dialect.version>
+		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+		<org.mapstruct.processor.version>1.4.2.Final</org.mapstruct.processor.version>
 	</properties>
 
 
@@ -63,6 +65,12 @@
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<version>2.8.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>mapstruct</artifactId>
+					<groupId>org.mapstruct</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -84,6 +92,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>1.18.18</version>
 			<optional>true</optional>
 		</dependency>
 		<!--mybatis生成工具-->
@@ -91,6 +100,12 @@
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 			<version>3.1.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>mybatis-plus-extension</artifactId>
+					<groupId>com.baomidou</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 <!--		mybatis自动生成代码-->
 		<dependency>
@@ -178,11 +193,40 @@
 		</dependency>
 
 
+		<!-- pagehelper -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.7</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>mybatis</artifactId>
+					<groupId>org.mybatis</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>mybatis-spring</artifactId>
+					<groupId>org.mybatis</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
 <!--		gson-->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.8.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>${org.mapstruct.processor.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -210,6 +254,23 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-compiler-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<source>1.8</source>-->
+<!--					<target>1.8</target>-->
+<!--					<annotationProcessorPaths>-->
+<!--						<path>-->
+<!--							<groupId>org.mapstruct</groupId>-->
+<!--							<artifactId>mapstruct-processor</artifactId>-->
+<!--							<version>${org.mapstruct.version}</version>-->
+<!--						</path>-->
+<!--					</annotationProcessorPaths>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+
 		</plugins>
 	</build>
 </project>

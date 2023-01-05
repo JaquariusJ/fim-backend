@@ -3,7 +3,11 @@ package com.money.fimsystem.consume.accounts.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.github.pagehelper.PageInfo;
 import com.money.fimsystem.common.entity.ResponseResult;
+import com.money.fimsystem.consume.accounts.mapstruct.AccountDetailMS;
+import com.money.fimsystem.consume.accounts.vo.AccountDetailVo;
+import lombok.Getter;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.money.fimsystem.consume.accounts.entity.AccountDetail;
@@ -22,16 +26,20 @@ import java.util.List;
     * </p>
 *
 * @author wujian
-* @since 2022-12-31
+* @since 2023-01-03
 * @version v1.0
 */
 @Api(tags = {""})
 @RestController
-@RequestMapping("/accounts/detail")
+@RequestMapping("/accounts")
 public class AccountDetailController {
     private Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private IAccountDetailService accountDetailService;
+
+    @Autowired
+    private AccountDetailMS accountDetailMS;
+
 
     /**
     * 保存和修改公用的
@@ -40,7 +48,8 @@ public class AccountDetailController {
     */
     @RequestMapping(value="/save",method= RequestMethod.POST)
     @ResponseBody
-    public ResponseResult save(@RequestBody AccountDetail accountDetail){
+    public ResponseResult save(@RequestBody AccountDetail accountDetail,@RequestHeader("userId")Long userId){
+        accountDetail.setUserid(userId);
         if(accountDetail.getId()!=null){
             accountDetailService.updateById(accountDetail);
         }else{
@@ -86,7 +95,7 @@ public class AccountDetailController {
         * @return
         */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public ResponseResult list(@RequestBody AccountDetail accountDetail){
+    public ResponseResult<List<AccountDetail>> list(@RequestBody AccountDetail accountDetail, @RequestHeader("userId") Long userId){
         List<AccountDetail> list = null;
         list = accountDetailService.list(new LambdaQueryWrapper<>(accountDetail));
         return ResponseResult.success(list);
@@ -95,17 +104,14 @@ public class AccountDetailController {
 
         /**
         *分页查询
-        * @param debt
         * @param pageNo
         * @param PageNum
         * @return
         */
-    @RequestMapping(value = "/pagelist",method = RequestMethod.POST)
-    public ResponseResult<IPage> selectPage(@RequestBody AccountDetail accountDetail,int pageNo,int PageNum) {
-        IPage<AccountDetail> iPage = null;
-        Page<AccountDetail> page = null;
-        page = new Page<AccountDetail>(pageNo,PageNum);
-        iPage = accountDetailService.page(page);
+    @GetMapping(value = "/pagelist")
+    public ResponseResult<PageInfo<AccountDetailVo>> selectPage(AccountDetail accountDetail,@RequestHeader("userId") Long userId,int pageNo,int pageNum) {
+        accountDetail.setUserid(userId);
+        PageInfo<AccountDetailVo> iPage = accountDetailService.pageList(accountDetail,pageNo,pageNum);
         return ResponseResult.success(iPage);
     }
     }

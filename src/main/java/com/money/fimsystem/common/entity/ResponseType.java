@@ -1,9 +1,12 @@
 package com.money.fimsystem.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 
 @AllArgsConstructor
+@Getter
 public enum ResponseType {
 
     SUCCESS(200,"Successful","JSON String of process item.Refer to following sample response"),
@@ -13,10 +16,7 @@ public enum ResponseType {
     SERVER_ERRROR(500,"Failed,Internal Server Error","Error,message");
 
 
-    @Getter
     private int code;
-    @Getter
     private String message;
-    @Getter
     private String desc;
 }

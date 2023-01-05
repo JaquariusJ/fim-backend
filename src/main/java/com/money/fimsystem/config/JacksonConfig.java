@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -53,6 +54,7 @@ public class JacksonConfig {
                 new LocalTimeDeserializer(DateTimeFormatter.ofPattern(localTimeFormat)));
 
         javaTimeModule.addSerializer(Long.class, ToStringSerializer.instance);
+        javaTimeModule.addSerializer(BigDecimal.class, ToStringSerializer.instance);
 
         om.registerModule(javaTimeModule);
 //        SimpleModule simpleModule = new SimpleModule();

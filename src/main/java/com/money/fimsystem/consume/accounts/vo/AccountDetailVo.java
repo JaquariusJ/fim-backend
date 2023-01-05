@@ -1,14 +1,17 @@
-package com.money.fimsystem.consume.accounts.entity;
+package com.money.fimsystem.consume.accounts.vo;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.money.fimsystem.common.entity.BaseObject;
+import com.money.fimsystem.consume.accounts.entity.AccountLogo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 /**
  * <p>
@@ -20,19 +23,17 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(value="AccountDetail对象", description="")
-public class AccountDetail extends BaseObject {
+public class AccountDetailVo extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
     @ApiModelProperty(value = "用户id")
     private Long userid;
 
-    @ApiModelProperty(value = "logoid")
-    private Long logoid;
+    @ApiModelProperty(value = "logo")
+    private AccountLogo accountLogo;
 
     @ApiModelProperty(value = "备注信息")
     private String mask;
@@ -41,6 +42,7 @@ public class AccountDetail extends BaseObject {
     private LocalDate accountDate;
 
     @ApiModelProperty(value = "金额")
+//    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal mount;
 
 

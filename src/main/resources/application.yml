@@ -30,6 +30,10 @@ spring:
     local-time-format: HH:mm:ss
     generator:
       write-numbers-as-strings: true
+  main:
+#    解决springboot2.6循环引用的问题
+    allow-circular-references: true
+
 logging:
   level:
     root: info

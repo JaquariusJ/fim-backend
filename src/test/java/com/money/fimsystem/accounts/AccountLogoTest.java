@@ -29,9 +29,9 @@ public class AccountLogoTest {
         //支出
         AccountLogo l1 = new AccountLogo();
         l1.setUserid(0l);
-        l1.setType(AccountTypeEnum.PAY.getValue());
+        l1.setType(AccountTypeEnum.PAY.getCode());
         l1.setTitle("交通");
-        l1.setCategory(AccountCategoryEnum.TRAFFIC.getValue());
+        l1.setCategory(AccountCategoryEnum.TRAFFIC.getCode());
         l1.setLogoName("taxi");
         l1.setIsCustom(0);
         accountLogoMapper.insert(l1);
