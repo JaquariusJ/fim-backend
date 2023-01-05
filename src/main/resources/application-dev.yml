@@ -16,6 +16,7 @@ spring:
         #最大空闲连接
         max-idle: 8
         #连接超时时间（ms）
+    connect-timeout: 5000ms
 
 
 mybatis-plus:

@@ -1,26 +1,23 @@
 package com.money.fimsystem.consume.accounts.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.pagehelper.PageInfo;
 import com.money.fimsystem.auth.LoginManager;
 import com.money.fimsystem.common.entity.ResponseResult;
-import com.money.fimsystem.consume.accounts.mapstruct.AccountDetailMS;
-import com.money.fimsystem.consume.accounts.vo.AccountDetailVo;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.money.fimsystem.consume.accounts.entity.AccountDetail;
+import com.money.fimsystem.consume.accounts.entity.AccountTotal;
+import com.money.fimsystem.consume.accounts.mapstruct.AccountDetailMS;
 import com.money.fimsystem.consume.accounts.service.IAccountDetailService;
+import com.money.fimsystem.consume.accounts.vo.AccountDetailVo;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-    import org.springframework.web.bind.annotation.RestController;
+import java.time.LocalDate;
+import java.util.List;
 
 /**
 * <p>
@@ -33,7 +30,7 @@ import java.util.List;
 */
 @Api(tags = {""})
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping("/accounts/detail")
 @Slf4j
 public class AccountDetailController {
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -118,4 +115,17 @@ public class AccountDetailController {
         PageInfo<AccountDetailVo> iPage = accountDetailService.pageList(accountDetail,pageNo,pageNum);
         return ResponseResult.success(iPage);
     }
+
+    /**
+     * 查询总信息
+     * @return
+     */
+    @GetMapping(value = "/totalInfo")
+    public ResponseResult<AccountTotal> getTotalInfo(LocalDate accountDate) {
+        AccountDetail accountDetail = new AccountDetail();
+        accountDetail.setAccountDate(accountDate);
+        AccountTotal accountTotal = accountDetailService.getTotalInfo(accountDetail);
+        return ResponseResult.success(accountTotal);
+    }
+
     }

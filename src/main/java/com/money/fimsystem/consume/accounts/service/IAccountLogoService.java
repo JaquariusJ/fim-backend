@@ -12,4 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IAccountLogoService extends IService<AccountLogo> {
 
 
+    boolean deleteById(Long id);
 }

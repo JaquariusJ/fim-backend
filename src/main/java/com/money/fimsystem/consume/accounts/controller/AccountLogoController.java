@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.money.fimsystem.auth.LoginManager;
 import com.money.fimsystem.common.entity.ResponseResult;
-import com.money.fimsystem.common.utils.JsonUtils;
 import com.money.fimsystem.consume.accounts.entity.AccountCategory;
 import com.money.fimsystem.consume.enums.AccountCategoryEnum;
 import com.money.fimsystem.consume.enums.AccountTypeEnum;
@@ -63,7 +62,7 @@ public class AccountLogoController {
     */
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public ResponseResult delete(@PathVariable("id") Long id){
-        accountLogoService.removeById(id);
+        accountLogoService.deleteById(id);
         return ResponseResult.success();
     }
 
